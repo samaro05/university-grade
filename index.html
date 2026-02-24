@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب معدل الجامعي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="cc.icon" rel="icon">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --accent: #00d4ff;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #ffffff;
+            --danger: #ff4757;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05), transparent);
+            color: var(--text-main) !important;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .main-card {
+            background: var(--card-bg) !important;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 950px;
+            margin: auto;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        h2 { 
+            color: var(--primary) !important; 
+            font-weight: 900; 
+            text-align: center; 
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .table {
+            --bs-table-bg: transparent !important;
+            --bs-table-color: var(--text-main) !important;
+        }
+
+        .table th {
+            color: var(--accent) !important;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3) !important;
+            padding: 12px !important;
+        }
+
+        .table td {
+            vertical-align: middle;
+            border: none !important;
+            padding: 10px 5px !important;
+        }
+
+        .module-name { 
+            text-align: right !important; 
+            font-weight: 700; 
+            width: 30%;
+            color: #ffffff !important;
+        }
+
+        .form-control {
+            width: 70px !important;
+            background-color: #0f172a !important;
+            border: 2px solid #334155 !important;
+            color: #ffffff !important;
+            text-align: center;
+            font-weight: 700;
+            border-radius: 10px;
+            margin: auto;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8 !important;
+            opacity: 1 !important;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4) !important;
+            outline: none !important;
+        }
+
+        input::-webkit-outer-spin-button, 
+        input::-webkit-inner-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0;
+        }
+        input[type=number] { 
+            -moz-appearance: textfield; 
+        }
+
+        .unit-row { 
+            background: rgba(0, 212, 255, 0.08) !important; 
+            font-weight: 900; 
+        }
+        .unit-title { 
+            color: var(--accent) !important; 
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .m-avg {
+            font-weight: 900 !important;
+            font-size: 1.1rem !important;
+        }
+
+        .passed {
+            color: var(--primary) !important;
+        }
+
+        .failed {
+            color: var(--danger) !important;
+        }
+
+        #avgA, #avgM, #avgT {
+            font-weight: 900 !important;
+            font-size: 1.1rem !important;
+        }
+
+        .final-result-container {
+            margin-top: 25px;
+            border: 2px solid var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 10px 200px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #totalAvg { 
+            font-size: 2.5rem; 
+            font-weight: 900;
+            transition: all 0.4s;
+        }
+
+        .footer { 
+            margin-top: 30px; 
+            color: #94a3b8; 
+            font-size: 0.85rem; 
+            text-align: center; 
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .pulse-avg {
+            animation: pulse 0.4s ease-in-out;
+        }
+
+        .heart {
+            color: var(--danger);
+            animation: heartBeat 1.5s infinite;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="main-card">
+        <h2>حساب المعدل الجامعي للسداسي الاول : ST</h2>
+
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th class="text-end">المقياس</th>
+                        <th>المعامل</th>
+                        <th>امتحان</th>
+                        <th>TD</th>
+                        <th>TP</th>
+                        <th>المعدل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="module" data-unit="A" data-type="mix">
+                        <td class="module-name">تحليل الرياضيات 1</td>
+                        <td><input type="number" class="form-control coeff" value="3" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td><input type="number" class="form-control td" placeholder="0"></td>
+                        <td>-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="A" data-type="mix">
+                        <td class="module-name">فيزياء الميكانيك</td>
+                        <td><input type="number" class="form-control coeff" value="3" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td><input type="number" class="form-control td" placeholder="0"></td>
+                        <td>-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="A" data-type="mix">
+                        <td class="module-name">بنية المادة</td>
+                        <td><input type="number" class="form-control coeff" value="3" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td><input type="number" class="form-control td" placeholder="0"></td>
+                        <td>-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="A" data-type="mix">
+                        <td class="module-name">الجبر 1</td>
+                        <td><input type="number" class="form-control coeff" value="2" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td><input type="number" class="form-control td" placeholder="0"></td>
+                        <td>-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="unit-row">
+                        <td colspan="5" class="unit-title" style="text-align: right; padding-right: 20px;">
+                            <span style="color: var(--accent); margin-left: 10px;">(و.ت.أ)   A00F0001S1</span>                            
+                        </td>
+                        <td id="avgA">0.00</td>
+                    </tr>
+
+                    <tr class="module" data-unit="M" data-type="tp">
+                        <td class="module-name">TP فيزياء الميكانيك</td>
+                        <td><input type="number" class="form-control coeff" value="1" readonly></td>
+                        <td colspan="2">-</td>
+                        <td><input type="number" class="form-control tp" placeholder="0"></td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="M" data-type="tp">
+                        <td class="module-name">TP بنية المادة</td>
+                        <td><input type="number" class="form-control coeff" value="1" readonly></td>
+                        <td colspan="2">-</td>
+                        <td><input type="number" class="form-control tp" placeholder="0"></td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="M" data-type="mix">
+                        <td class="module-name">هيكل أجهزة الكمبيوتر</td>
+                        <td><input type="number" class="form-control coeff" value="2" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td><input type="number" class="form-control td" placeholder="0"></td>
+                        <td>-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="unit-row">
+                        <td colspan="5" class="unit-title" style="text-align: right; padding-right: 20px;">
+                            <span style="color: var(--accent); margin-left: 10px;">(و.ت.م)   A00M0001S1</span>
+
+                        </td>
+                        <td id="avgM">0.00</td>
+                    </tr>
+
+                    <tr class="module" data-unit="T" data-type="exam">
+                        <td class="module-name">البعد الأخلاقي والأخلاق</td>
+                        <td><input type="number" class="form-control coeff" value="1" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td colspan="2">-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="module" data-unit="T" data-type="exam">
+                        <td class="module-name">المهن في العلوم والتكنولوجيا</td>
+                        <td><input type="number" class="form-control coeff" value="1" readonly></td>
+                        <td><input type="number" class="form-control exam" placeholder="0"></td>
+                        <td colspan="2">-</td>
+                        <td class="m-avg">0.00</td>
+                    </tr>
+                    <tr class="unit-row">
+                        <td colspan="5" class="unit-title" style="text-align: right; padding-right: 20px;">                     
+                            <span style="color: var(--accent); margin-left: 10px;">(و.ت.ع)   A00T0001S1</span>
+                        </td>
+                        <td id="avgT">0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center">
+            <div class="final-result-container">
+                <span style="color: var(--accent); font-weight: 900; font-size: 1.3rem;">معدل السداسي الأول:</span>
+                <span id="totalAvg">0.00</span>
+                <span style="opacity: 0.5;">/20</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>جميع الحقوق محفوظة لدى سمارو <span class="heart">❤</span> 2026</p>
+    </div>
+</div>
+
+<script>
+    const allInputs = document.querySelectorAll('input:not([readonly])');
+    const totalDisplay = document.getElementById('totalAvg');
+
+    allInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            calculate();
+            
+            totalDisplay.classList.remove('pulse-avg');
+            void totalDisplay.offsetWidth; 
+            totalDisplay.classList.add('pulse-avg');
+        });
+    });
+
+    function calculate() {
+        let units = { 
+            A: { sum: 0, coef: 0 }, 
+            M: { sum: 0, coef: 0 }, 
+            T: { sum: 0, coef: 0 } 
+        };
+
+        document.querySelectorAll('.module').forEach(row => {
+            const unit = row.dataset.unit;
+            const type = row.dataset.type;
+            const c = parseFloat(row.querySelector('.coeff').value) || 0;
+            const exam = parseFloat(row.querySelector('.exam')?.value) || 0;
+            const td = parseFloat(row.querySelector('.td')?.value) || 0;
+            const tp = parseFloat(row.querySelector('.tp')?.value) || 0;
+            
+            let mAvg = 0;
+            if (type === 'mix') {
+                mAvg = (exam * 0.6) + (td * 0.4);
+            } else if (type === 'tp') {
+                mAvg = tp;
+            } else if (type === 'exam') {
+                mAvg = exam;
+            }
+
+            const cell = row.querySelector('.m-avg');
+            cell.textContent = mAvg.toFixed(2);
+            cell.className = 'm-avg ' + (mAvg >= 10 ? 'passed' : 'failed');
+
+            units[unit].sum += (mAvg * c);
+            units[unit].coef += c;
+        });
+
+        let totalPoints = 0, totalCoef = 0;
+        for (let k in units) {
+            const uAvg = units[k].coef > 0 ? units[k].sum / units[k].coef : 0;
+            const uCell = document.getElementById('avg' + k);
+            uCell.textContent = uAvg.toFixed(2);
+            uCell.className = uAvg >= 10 ? 'passed' : 'failed';
+            totalPoints += units[k].sum;
+            totalCoef += units[k].coef;
+        }
+
+        const final = totalCoef > 0 ? totalPoints / totalCoef : 0;
+        totalDisplay.textContent = final.toFixed(2);
+        totalDisplay.style.color = final >= 10 ? 'var(--primary)' : 'var(--danger)';
+    }
+
+    calculate();
+</script>
+</body>
+</html>
