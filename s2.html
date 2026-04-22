@@ -58,7 +58,6 @@
         }
         #totalAvg { font-size: 2.5rem; font-weight: 900; transition: all 0.4s; }
 
-        /* ─── تنبيه أكاديمي ─── */
         .academic-notice {
             max-width: 950px; width: 100%;
             background: rgba(245,158,11,0.06);
@@ -85,19 +84,16 @@
         .notice-text strong { color: #f8fafc; }
         .notice-sep { border: none; border-top: 1px solid rgba(245,158,11,0.15); margin: 8px 0; }
 
-        /* ─── أزرار جانبية ─── */
         .side-btn { position: fixed; white-space: nowrap; z-index: 9999; font-size: 0.85rem; padding: 8px 16px; gap: 8px; border-radius: 0 0 14px 14px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; cursor: pointer; transform-origin: center center; }
         .telegram-btn  { background: #0088cc; color: #fff !important; }
         .instagram-btn { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff !important; }
         .side-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
-        /* ─── lang switcher ─── */
         .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 9999; display: flex; gap: 4px; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
         .lang-btn { padding: 5px 11px; border-radius: 8px; border: 1px solid transparent; background: transparent; color: #64748b; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; letter-spacing: 1px; }
         .lang-btn.active { background: rgba(0,255,136,0.12); color: var(--primary); border-color: rgba(0,255,136,0.3); }
         .lang-btn:hover:not(.active) { color: #fff; background: rgba(255,255,255,0.06); }
 
-        /* ─── شريط ديني ─── */
         .religious-bar { width: 100%; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg,rgba(255,215,0,0.07),rgba(0,255,136,0.03),rgba(255,215,0,0.07)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid rgba(255,215,0,0.25); padding: 8px 40px; text-align: center; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px; z-index: 9998; overflow: hidden; }
         .religious-bar::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,215,0,0.05),transparent); animation:shimmer 5s infinite; }
         .bar-label { font-size:0.65rem; font-weight:700; letter-spacing:1.5px; opacity:0.5; transition:opacity 0.5s ease; white-space:nowrap; }
@@ -132,7 +128,6 @@
 
 <div class="container">
 
-    <!-- زر الرجوع -->
     <div class="d-flex justify-content-center">
         <div style="max-width:950px;width:100%;padding:0 10px;margin-bottom:15px;">
             <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--accent);text-decoration:none;font-weight:700;font-size:0.95rem;padding:8px 20px;border-radius:12px;transition:background 0.3s;"
@@ -143,7 +138,6 @@
         </div>
     </div>
 
-    <!-- الجدول الرئيسي -->
     <div class="d-flex justify-content-center">
         <div class="main-card">
             <h2><span data-key="title">حساب المعدل الجامعي للسداسي الثاني</span></h2>
@@ -161,7 +155,6 @@
                     </thead>
                     <tbody>
 
-                        <!-- ════ وحدة د — A00D0001S2 ════ -->
                         <tr class="module" data-unit="D" data-type="mix">
                             <td class="module-name" data-key="m6">الجبر-2</td>
                             <td><input type="number" class="form-control coeff" value="2" readonly></td>
@@ -177,7 +170,6 @@
                             <td id="avgD">0.00</td>
                         </tr>
 
-                        <!-- ════ وحدة أ — A00F0001S2 ════ -->
                         <tr class="module" data-unit="A" data-type="mix">
                             <td class="module-name" data-key="m2">ترموديناميك</td>
                             <td><input type="number" class="form-control coeff" value="3" readonly></td>
@@ -209,7 +201,6 @@
                             <td id="avgA">0.00</td>
                         </tr>
 
-                        <!-- ════ وحدة م — A00M0001S2 ════ -->
                         <tr class="module" data-unit="M" data-type="tp">
                             <td class="module-name" data-key="m4">الكهرباء والمغناطيسية TP</td>
                             <td><input type="number" class="form-control coeff" value="1" readonly></td>
@@ -239,7 +230,6 @@
                             <td id="avgM">0.00</td>
                         </tr>
 
-                        <!-- ════ وحدة ع — A00T0001S2 ════ -->
                         <tr class="module" data-unit="T" data-type="mix">
                             <td class="module-name" data-key="m8">البرمجيات الحرة - المصادر المفتوحة</td>
                             <td><input type="number" class="form-control coeff" value="2" readonly></td>
@@ -259,7 +249,6 @@
                 </table>
             </div>
 
-            <!-- النتيجة النهائية -->
             <div class="text-center">
                 <div class="final-result-container">
                     <span style="color:var(--accent);font-weight:900;font-size:1.3rem;" data-key="finalLabel">معدل السداسي الثاني:</span>
@@ -271,9 +260,8 @@
     </div>
 
 
-</div><!-- /container -->
+</div>
 
-<!-- أزرار تواصل -->
 <a id="tgBtn" data-href="https://t.me/samaro05" class="side-btn telegram-btn">
     <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
     Telegram
@@ -294,7 +282,6 @@
 </div>
 
 <script>
-    /* ─── ترجمات ─── */
     const translations = {
         ar: {
             title:'حساب المعدل الجامعي للسداسي الثاني', back:'رجوع للقائمة الرئيسية',
@@ -356,7 +343,6 @@
 </script>
 
 <script>
-    /* ─── حساب المعدل ─── */
     const allInputs    = document.querySelectorAll('input:not([readonly])');
     const totalDisplay = document.getElementById('totalAvg');
 
@@ -409,7 +395,6 @@
         totalDisplay.style.color = final >= 10 ? 'var(--primary)' : 'var(--danger)';
     }
 
-    /* ─── أزرار جانبية ─── */
     function setupSideBtn(btnId, index) {
         const btn = document.getElementById(btnId);
         const upd = () => {
@@ -427,7 +412,6 @@
 
     window.addEventListener('load', () => { setupSideBtn('tgBtn',0); setupSideBtn('igBtn',1); calculate(); });
 
-    /* ─── شريط ديني ─── */
     const barItems = [
         { type:'salawat', label:'🌙 الصلاة على النبي', main:'اللهم صلِّ وسلم وبارك على سيدنا محمد ﷺ', ref:null },
         { type:'ayah',    label:'📖 آية كريمة',        main:'﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾',          ref:'— سورة طه، آية 114' },
