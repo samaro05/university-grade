@@ -382,13 +382,13 @@
             </div>
             <hr class="notice-sep">
             <p class="notice-text" data-key="noticeP1">
-                تعتمد هذه الأداة في حساباتها على قائمة المواد والمعاملات المأخوذة من منصة <strong>Progress</strong>.
+                تعتمد هذه الأداة في حساباتها على قائمة المواد والمعاملات المأخوذة من منصة <strong>Progress</strong>
             </p>
             <p class="notice-text" style="margin-top:6px;" data-key="noticeP2">
-                النتيجة المعروضة هي معدل فصلي يتم حسابه بناءً على العلامات التي أدخلتها؛ وهي لا تشمل حساب الأرصدة <strong>(Crédits)</strong>، ولا المعدل السنوي، كما لا تحدد الأهلية للدورة الاستدراكية.
+                النتيجة المعروضة هي معدل فصلي يتم حسابه بناءً على العلامات التي أدخلتها وهي لا تشمل حساب الأرصدة <strong>(Crédits)</strong> ولا المعدل السنوي، كما لا تحدد الأهلية للدورة الاستدراكية
             </p>
             <p class="notice-text" style="margin-top:6px;" data-key="noticeP3">
-                تبقى النتائج الرسمية والنهائية هي الواردة في كشف النقاط المعتمد عبر حسابك في <strong>Progress</strong> أو لدى مصلحة التدريس.
+                تبقى النتائج الرسمية والنهائية هي الواردة في كشف النقاط المعتمد عبر حسابك في <strong>Progress</strong> أو لدى مصلحة التدريس
             </p>
         </div>
     </div>
@@ -417,9 +417,9 @@
             soon: 'سيكون متاحاً قريباً...',
             noticeTitle: 'تنبيه هام',
             noticeBadge: 'ملاحظة',
-            noticeP1: 'تعتمد هذه الأداة في حساباتها على قائمة المواد والمعاملات المأخوذة من منصة Progress.',
-            noticeP2: 'النتيجة المعروضة هي معدل فصلي يتم حسابه بناءً على العلامات التي أدخلتها؛ وهي لا تشمل حساب الأرصدة (Crédits)، ولا المعدل السنوي، كما لا تحدد الأهلية للدورة الاستدراكية.',
-            noticeP3: 'تبقى النتائج الرسمية والنهائية هي الواردة في كشف النقاط المعتمد عبر حسابك في Progress أو لدى مصلحة التدريس.',
+            noticeP1: 'تعتمد هذه الأداة في حساباتها على قائمة المواد والمعاملات المأخوذة من منصة Progress',
+            noticeP2: 'النتيجة المعروضة هي معدل فصلي يتم حسابه بناءً على العلامات التي أدخلتها وهي لا تشمل حساب الأرصدة (Crédits) ولا المعدل السنوي، كما لا تحدد الأهلية للدورة الاستدراكية',
+            noticeP3: 'تبقى النتائج الرسمية والنهائية هي الواردة في كشف النقاط المعتمد عبر حسابك في Progress أو لدى مصلحة التدريس',
             dir: 'rtl', lang: 'ar'
         },
         en: {
@@ -434,9 +434,9 @@
             soon: 'Coming soon...',
             noticeTitle: 'Important Notice',
             noticeBadge: 'Note',
-            noticeP1: 'This tool bases its calculations on the list of modules and coefficients taken from the Progress platform.',
-            noticeP2: 'The result shown is a semester average calculated from the grades you entered; it does not include credit calculation (Crédits), the annual average, or eligibility for the make-up session.',
-            noticeP3: 'Official and final results remain those shown in the approved transcript via your Progress account or at the teaching department.',
+            noticeP1: 'This tool bases its calculations on the list of modules and coefficients taken from the Progress platform',
+            noticeP2: 'The result shown is a semester average calculated from the grades you entered it does not include credit calculation (Crédits) the annual average, or eligibility for the make-up session',
+            noticeP3: 'Official and final results remain those shown in the approved transcript via your Progress account or at the teaching department',
             dir: 'ltr', lang: 'en'
         },
         fr: {
@@ -451,9 +451,9 @@
             soon: 'Bientôt disponible...',
             noticeTitle: 'Avis Important',
             noticeBadge: 'Remarque',
-            noticeP1: "Cet outil base ses calculs sur la liste des matières et coefficients issus de la plateforme Progress.",
-            noticeP2: "La moyenne affichée est une moyenne semestrielle calculée à partir des notes saisies ; elle n'inclut pas le calcul des crédits (Crédits), la moyenne annuelle, ni l'éligibilité à la session de rattrapage.",
-            noticeP3: "Les résultats officiels et définitifs restent ceux figurant dans le relevé de notes approuvé via votre compte Progress ou auprès du service d'enseignement.",
+            noticeP1: "Cet outil base ses calculs sur la liste des matières et coefficients issus de la plateforme Progress",
+            noticeP2: "La moyenne affichée est une moyenne semestrielle calculée à partir des notes saisies elle n'inclut pas le calcul des crédits (Crédits), la moyenne annuelle, ni l'éligibilité à la session de rattrapage",
+            noticeP3: "Les résultats officiels et définitifs restent ceux figurant dans le relevé de notes approuvé via votre compte Progress ou auprès du service d'enseignement",
             dir: 'ltr', lang: 'fr'
         }
     };
@@ -462,7 +462,6 @@
         const t = translations[lang];
         document.querySelectorAll('[data-key]').forEach(el => {
             if (t[el.dataset.key] !== undefined) {
-                // فقرات التنبيه تحتوي على HTML
                 if (['noticeP1','noticeP2','noticeP3'].includes(el.dataset.key)) {
                     el.innerHTML = t[el.dataset.key];
                 } else {
